@@ -10,6 +10,18 @@ class TestApp extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    var myPinkContainer = Container(
+          color: Colors.pink,
+          height: 300,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              myContainer(),
+              myContainer(),
+            ],
+          ),
+        );
     return MaterialApp(
 
       home: Scaffold(
@@ -19,20 +31,7 @@ class TestApp extends StatelessWidget{
           title: const Text("Test App"),
         ),
 
-        body: Container(
-          color: Colors.amber,
-          height: 200,
-          width: 200,
-          margin: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-          padding: EdgeInsets.all(8),
-          alignment: Alignment.center,
-          child: Container(
-          alignment: Alignment.center,
-          width: 100,
-          height: 100,
-          color: Colors.red,
-          child: const Text("Hello Flutter"),),
-        ),
+        body: myMainColumn(myPinkContainer),
 
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -44,5 +43,31 @@ class TestApp extends StatelessWidget{
       )
 
     );
+  }
+
+  Column myMainColumn(Container myPinkContainer) {
+    return Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [myPinkContainer, myPinkContainer],
+      );
+  }
+
+  Container myContainer() {
+    return Container(
+        color: Colors.amber,
+        height: 150,
+        width: 150,
+        margin: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+        padding: EdgeInsets.all(8),
+        alignment: Alignment.center,
+        child: Container(
+        alignment: Alignment.center,
+        width: 100,
+        height: 100,
+        color: Colors.red,
+        child: const Text("Hello Flutter"),
+        ),
+      );
   }
 }
