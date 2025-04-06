@@ -31,7 +31,28 @@ class TestApp extends StatelessWidget{
           title: const Text("Test App"),
         ),
 
-        body: myMainColumn(myPinkContainer),
+        body: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Flexible(
+              flex: 1,
+              fit: FlexFit.tight,
+              child: Container(
+                color: Colors.red,
+                width: 50,
+                height: 300,
+              ),
+            ),
+              Flexible(
+                flex: 3,
+                child: Container(
+                  color: Colors.green,
+                  width: 50,
+                  height: 300,
+              ),
+            ),
+          ],
+        ),
 
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -43,6 +64,34 @@ class TestApp extends StatelessWidget{
       )
 
     );
+  }
+
+  List<Widget> get expandedAnlatimi {
+    return [
+          Expanded(
+            flex: 4,
+            child: Container(
+              height: 150,
+              color: Colors.red,
+            ),
+          ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                width: 300,
+                height: 150,
+                color: Colors.yellow,
+              ),
+            ),
+            Expanded(
+              flex: 4,
+              child: Container(
+                width: 50,
+                height: 150,
+                color: Colors.pink,
+              ),
+            ),
+        ];
   }
 
   Column myMainColumn(Container myPinkContainer) {
